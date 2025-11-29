@@ -27,7 +27,7 @@
             overflow-x: hidden;
         }
 
-        /* --- UPGRADE 1: Animierter Header --- */
+        /* --- Animierter Hintergrund (Upgrade 1) --- */
         header {
             height: 100vh;
             display: flex;
@@ -35,14 +35,12 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            /* Der neue Verlauf */
             background: linear-gradient(-45deg, #050a14, #0b162c, #102a4a, #001f3f);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             padding: 20px;
         }
 
-        /* Die Bewegungs-Animation */
         @keyframes gradientBG {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -101,7 +99,29 @@
         .about-text {
             font-size: 1.2rem;
             max-width: 800px;
+            margin: 0 auto;
             color: #b0b8c4;
+        }
+
+        /* --- KI-Bild Styling (Upgrade 2) --- */
+        .ai-image-container {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .ai-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.15); /* Leichter Glow */
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+        }
+        
+        .ai-image:hover {
+            opacity: 1;
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.3);
         }
 
         /* Tech Grid */
@@ -116,14 +136,14 @@
             padding: 40px;
             border-radius: 5px;
             border-top: 1px solid rgba(0, 212, 255, 0.1);
-            transition: all 0.3s ease; /* Weicher Übergang */
+            transition: all 0.3s ease;
         }
 
-        /* --- UPGRADE 3: Schwebende Karten --- */
+        /* --- Schwebende Karten (Upgrade 3) --- */
         .card:hover {
-            transform: translateY(-10px) scale(1.02); /* Hebt ab */
+            transform: translateY(-10px) scale(1.02);
             border-top: 1px solid var(--accent-color);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15); /* Leuchtet */
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15);
             background-color: #0e1c36;
         }
 
@@ -178,6 +198,11 @@
     <section id="about">
         <h2 class="section-title">Survival of the Fittest</h2>
         
+        <div class="ai-image-container">
+             <img src="HIER_DEIN_BILD_LINK_EINFUEGEN" alt="AION Neural Network" class="ai-image">
+             <p style="color: #4a5568; font-size: 0.8rem; margin-top: 10px;">(Visualisierung des Neuralen Netzwerks)</p>
+        </div>
+
         <div class="about-text">
             <p>
                 AION AMERICA S.A.S. ist ein Technologieunternehmen spezialisiert auf die Entwicklung 
