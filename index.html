@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AION AMERICA S.A.S. | Autonomous Intelligence</title>
+    <style>
+        :root {
+            --bg-color: #050a14; /* Sehr dunkles Blau/Schwarz */
+            --text-color: #e0e6ed;
+            --accent-color: #00d4ff; /* AION Cyan */
+            --secondary-bg: #0b162c;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header / Hero Section */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a2a4a 0%, var(--bg-color) 70%);
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #fff, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--accent-color);
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            padding: 15px 40px;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Sections General */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 20px;
+        }
+
+        /* About Section */
+        .about-text {
+            font-size: 1.2rem;
+            max-width: 800px;
+            color: #b0b8c4;
+        }
+
+        /* Tech Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background-color: var(--secondary-bg);
+            padding: 40px;
+            border-radius: 5px;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-top: 1px solid var(--accent-color);
+        }
+
+        .card h3 {
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-size: 1.4rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-bg);
+            padding: 60px 20px;
+            margin-top: 100px;
+            border-top: 1px solid #1c2b45;
+            font-size: 0.9rem;
+            color: #8892b0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .footer-block h4 {
+            color: #fff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            section { padding: 50px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>AION</h1>
+        <h2>Autonomous Intelligence Operating Network</h2>
+        <p style="margin-bottom: 30px; color: #8892b0;">America S.A.S.</p>
+        <a href="#about" class="cta-button">System Explore</a>
+    </header>
+
+    <section id="about">
+        <h2 class="section-title">Survival of the Fittest</h2>
+        <div class="about-text">
+            <p>
+                AION AMERICA S.A.S. ist ein Technologieunternehmen spezialisiert auf die Entwicklung 
+                selbst-evolvierender algorithmischer Systeme. Wir glauben nicht an statische Märkte. 
+                Unsere Systeme basieren auf einem darwinistischen Selektionsprozess, 
+                bei dem sich nur die effektivsten Strategien durchsetzen.
+            </p>
+            <br>
+            <p>
+                Wir kombinieren institutionelle Marktstruktur-Analysen mit modernstem Reinforcement Learning, 
+                um adaptive Intelligenz zu schaffen, die jenseits menschlicher Kapazitäten operiert.
+            </p>
+        </div>
+    </section>
+
+    <section id="tech">
+        <h2 class="section-title">Technologie-Stack</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Evolutionäre KI</h3>
+                <p>
+                    Unsere ML-Knoten optimieren sich über Generationen hinweg selbst. 
+                    Durch genetische Selektion von über 80 Parametern passt sich das System 
+                    dynamisch an jede Marktphase an – völlig autonom.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Raik-Methode</h3>
+                <p>
+                    Integration proprietärer Fibonacci-Frameworks zur Identifikation von 
+                    Konfluenzpunkten und hochwahrscheinlichen Umkehrzonen im institutionellen Handel.
+                </p>
+            </div>
+            <div class="card">
+                <h3>Smart Money Concepts</h3>
+                <p>
+                    Wir analysieren den Markt jenseits des Retail-Sentiments. 
+                    Unsere Algorithmen erkennen Order Blocks und Liquiditätszonen, 
+                    um den Fluss des großen Kapitals präzise zu antizipieren.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">Architektur & Sicherheit</h2>
+        <div class="about-text">
+            <p>
+                Transparenz statt Black-Box. AION nutzt ein unabhängiges Validierungs-System ("Voting"), 
+                das Signale durch vier verschiedene Analyse-Layer prüft, bevor eine autonome Entscheidung getroffen wird.
+                Dies garantiert Robustheit und reduziert das Risiko in volatilen Märkten.
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-block">
+                <h4>AION AMERICA S.A.S.</h4>
+                <p>Forschung & Entwicklung<br>Autonome Finanzsysteme</p>
+            </div>
+            <div class="footer-block">
+                <h4>Standort</h4>
+                <p>Ruta Santa Librada, Lote 003</p>
+                <p>5522 Mauricio Jose Troche</p>
+                <p>Guaira, Paraguay</p>
+            </div>
+            <div class="footer-block">
+                <h4>Kontakt</h4>
+                <p>E-Mail: ch.fock@gmx.net</p>
+                <p>Tel: +595 984 530364</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 50px; color: #4a5568; font-size: 0.8rem;">
+            &copy; 2025 AION AMERICA S.A.S. | All Systems Operational.
+        </div>
+    </footer>
+
+</body>
+</html>
