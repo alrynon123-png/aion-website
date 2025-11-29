@@ -27,7 +27,7 @@
             overflow-x: hidden;
         }
 
-        /* Header / Hero Section */
+        /* --- UPGRADE 1: Animierter Header --- */
         header {
             height: 100vh;
             display: flex;
@@ -35,8 +35,18 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: radial-gradient(circle at center, #1a2a4a 0%, var(--bg-color) 70%);
+            /* Der neue Verlauf */
+            background: linear-gradient(-45deg, #050a14, #0b162c, #102a4a, #001f3f);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             padding: 20px;
+        }
+
+        /* Die Bewegungs-Animation */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         h1 {
@@ -106,12 +116,15 @@
             padding: 40px;
             border-radius: 5px;
             border-top: 1px solid rgba(0, 212, 255, 0.1);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease; /* Weicher Übergang */
         }
 
+        /* --- UPGRADE 3: Schwebende Karten --- */
         .card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) scale(1.02); /* Hebt ab */
             border-top: 1px solid var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.15); /* Leuchtet */
+            background-color: #0e1c36;
         }
 
         .card h3 {
@@ -164,6 +177,7 @@
 
     <section id="about">
         <h2 class="section-title">Survival of the Fittest</h2>
+        
         <div class="about-text">
             <p>
                 AION AMERICA S.A.S. ist ein Technologieunternehmen spezialisiert auf die Entwicklung 
