@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AION AMERICA S.A.S. | KI-gestützter Handelsexperte</title>
+    <!-- FontAwesome für Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
             --bg-color: #050a14;
@@ -11,6 +14,7 @@
             --accent-color: #00d4ff; /* Neonblau */
             --accent-glow: rgba(0, 212, 255, 0.5);
             --secondary-bg: #0b162c;
+            --card-bg: rgba(11, 22, 44, 0.6);
             --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             --nav-height: 80px;
         }
@@ -28,7 +32,7 @@
             font-family: var(--font-main);
             line-height: 1.8;
             overflow-x: hidden;
-            padding-top: var(--nav-height); /* Platz für fixierte Navbar */
+            padding-top: var(--nav-height);
         }
 
         /* --- NAVIGATION --- */
@@ -41,7 +45,7 @@
             background: rgba(5, 10, 20, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0, 212, 255, 0.1);
-            z-index: 9999; /* Immer ganz oben */
+            z-index: 9999;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -54,8 +58,12 @@
             color: #fff;
             text-transform: uppercase;
             letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
+        .nav-logo i { color: var(--accent-color); }
         .nav-logo span { color: var(--accent-color); }
 
         .nav-links {
@@ -72,9 +80,7 @@
             transition: color 0.3s;
         }
 
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
+        .nav-links a:hover { color: var(--accent-color); }
 
         /* --- GLOBAL SECTIONS --- */
         section {
@@ -82,8 +88,6 @@
             max-width: 1400px;
             margin: 0 auto;
             border-bottom: 1px solid rgba(255,255,255,0.03);
-            position: relative; /* Wichtig für Sichtbarkeit */
-            z-index: 1;
         }
 
         h2.section-title {
@@ -104,9 +108,9 @@
             box-shadow: 0 0 10px var(--accent-glow);
         }
 
-        /* --- 1. HERO SECTION (#home) --- */
+        /* --- HERO SECTION --- */
         #home {
-            min-height: 90vh; /* Fast ganzer Bildschirm */
+            min-height: 90vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -154,6 +158,7 @@
             display: inline-block;
             box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
             cursor: pointer;
+            font-weight: bold;
         }
 
         .cta-button:hover {
@@ -162,7 +167,6 @@
             box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
         }
 
-        /* Hero Tiles */
         .hero-tiles {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -172,17 +176,29 @@
         }
 
         .tile {
-            background: var(--secondary-bg);
+            background: var(--card-bg);
             padding: 30px;
             border-radius: 5px;
             border-left: 3px solid var(--accent-color);
             text-align: left;
+            transition: transform 0.3s;
+        }
+
+        .tile:hover {
+            transform: translateY(-5px);
+            background: rgba(11, 22, 44, 0.8);
+        }
+
+        .tile i {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
         }
 
         .tile h3 { color: #fff; margin-bottom: 10px; }
         .tile p { font-size: 0.9rem; color: #a0a8b4; }
 
-        /* --- 2. ÜBER UNS (#about) --- */
+        /* --- ABOUT SECTION --- */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 2fr;
@@ -190,61 +206,73 @@
             align-items: center;
         }
 
-        .founder-img-placeholder {
+        /* Container für das Gründer-Bild */
+        .founder-container {
             width: 100%;
             height: auto;
-            background: #0e1c36;
-            border: 1px solid #1c2b45;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 10px;
             border-radius: 10px;
+            background: rgba(11, 22, 44, 0.3);
         }
         
         .founder-img {
             width: 100%;
             height: auto;
-            object-fit: cover;
+            border-radius: 5px;
+            display: block;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
             opacity: 0.9;
+            transition: opacity 0.3s;
         }
 
-        .about-content ul {
-            list-style: none;
-            margin-top: 20px;
-        }
+        .founder-img:hover { opacity: 1; }
 
-        .about-content li {
-            margin-bottom: 15px;
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .about-content li::before {
-            content: '▹';
+        .about-content ul { list-style: none; margin-top: 20px; }
+        .about-content li { margin-bottom: 15px; padding-left: 30px; position: relative; }
+        .about-content li::before { 
+            content: '\f058'; 
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
             color: var(--accent-color);
             position: absolute;
             left: 0;
         }
 
-        /* --- 3. TECHNOLOGIE (#tech) --- */
-        
-        /* Timeline Style */
+        /* --- TECH & FEATURES IMAGE STYLING --- */
+        .content-image-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.1);
+        }
+
+        .content-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .content-image-container:hover .content-image {
+            transform: scale(1.02);
+        }
+
+        /* --- TECH SECTION --- */
         .timeline {
-            border-left: 2px solid var(--secondary-bg);
+            border-left: 2px solid rgba(0, 212, 255, 0.3);
             padding-left: 40px;
             margin: 40px 0 80px 20px;
         }
 
-        .timeline-item {
-            position: relative;
-            margin-bottom: 40px;
-        }
-
+        .timeline-item { position: relative; margin-bottom: 40px; }
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -49px; /* Linie treffen */
+            left: -49px;
             top: 5px;
             width: 16px;
             height: 16px;
@@ -253,37 +281,37 @@
             border-radius: 50%;
             box-shadow: 0 0 10px var(--accent-glow);
         }
-
+        
         .timeline-item h4 { color: #fff; margin-bottom: 5px; }
-        .timeline-item p { font-size: 0.95rem; }
 
-        /* 3 Columns Tech */
-        .tech-columns {
+        .framework-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
+            gap: 30px;
+            margin-top: 40px;
         }
 
-        .tech-col {
-            background: rgba(11, 22, 44, 0.5);
-            padding: 30px;
-            border-top: 1px solid var(--accent-color);
-            transition: transform 0.3s;
-        }
-        
-        .tech-col:hover { transform: translateY(-5px); }
-
-        .tech-image {
-            width: 100%;
-            height: auto;
-            margin-bottom: 30px;
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 5px;
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+        .framework-card {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.3s;
         }
 
-        /* --- 4. FUNKTIONEN (#features) --- */
+        .framework-card:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.1);
+        }
+
+        .framework-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        /* --- FEATURES SECTION --- */
         .process-loop {
             display: flex;
             justify-content: space-between;
@@ -291,24 +319,27 @@
             flex-wrap: wrap;
             margin-bottom: 80px;
             background: var(--secondary-bg);
-            padding: 30px;
+            padding: 40px;
             border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.05);
         }
         
-        .step { text-align: center; flex: 1; min-width: 150px; padding: 10px; }
-        .step h4 { color: var(--accent-color); margin-bottom: 5px; font-size: 1rem; }
-        .arrow { color: #3a4b66; font-size: 1.5rem; }
+        .step { text-align: center; flex: 1; min-width: 140px; }
+        .step h4 { color: var(--accent-color); margin-top: 10px; font-size: 0.9rem; }
+        .step i { font-size: 1.5rem; color: #fff; }
+        .arrow { color: #3a4b66; font-size: 1.2rem; }
 
         .video-feature {
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto 60px auto;
             display: block;
             border-radius: 10px;
             border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.1);
         }
 
-        /* --- 5. INVESTOREN (#investors) --- */
+        /* --- INVESTORS SECTION --- */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -323,51 +354,53 @@
             color: transparent;
             -webkit-text-stroke: 1px var(--accent-color);
             margin-bottom: 10px;
+            font-family: sans-serif;
         }
 
-        .stat-label { color: #fff; text-transform: uppercase; letter-spacing: 1px; }
+        .stat-label { color: #fff; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
 
-        /* --- 6. KONTAKT (#contact) --- */
+        /* --- CONTACT SECTION --- */
         .contact-box {
-            background: var(--secondary-bg);
+            background: linear-gradient(135deg, var(--secondary-bg), #050a14);
             padding: 60px;
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
-            border: 1px solid rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 10px;
         }
 
-        .contact-detail {
-            margin: 20px 0;
-            font-size: 1.1rem;
-        }
-        
-        .contact-detail strong { color: #fff; display: block; margin-bottom: 5px; }
+        .contact-detail { margin: 30px 0; font-size: 1.1rem; }
+        .contact-detail strong { color: var(--accent-color); display: block; margin-bottom: 5px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
 
-        /* --- Footer --- */
         footer {
             text-align: center;
             padding: 40px;
             font-size: 0.8rem;
             color: #5a6b86;
             border-top: 1px solid #1c2b45;
+            background: #020408;
         }
 
-        /* Mobile Nav */
+        /* Mobile */
         @media (max-width: 768px) {
-            .nav-links { display: none; } /* Vereinfachung für Mobile */
+            .nav-links { display: none; }
             nav { justify-content: center; }
             .about-grid { grid-template-columns: 1fr; }
-            .process-loop { flex-direction: column; gap: 20px; }
+            .process-loop { flex-direction: column; gap: 30px; }
             .arrow { transform: rotate(90deg); }
+            h1 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVIGATION -->
+    <!-- NAV -->
     <nav>
-        <div class="nav-logo">AION <span>AMERICA</span></div>
+        <div class="nav-logo">
+            <i class="fas fa-brain"></i>
+            AION <span>AMERICA</span>
+        </div>
         <div class="nav-links">
             <a href="#home">Home</a>
             <a href="#about">Über</a>
@@ -378,31 +411,34 @@
         </div>
     </nav>
 
-    <!-- 1. HOME / HERO -->
+    <!-- 1. HOME -->
     <section id="home">
+        <!-- Logo-Video -->
         <div class="hero-video-container">
-            <!-- Logo-Video -->
             <video autoplay muted loop playsinline class="hero-video">
                 <source src="Video_Fortsetzung_Mit_Logo.mp4" type="video/mp4">
             </video>
         </div>
         
         <div class="hero-text">
-            <h1>AION – KI-gestützter Handelsexperte</h1>
+            <h1>KI-gestützter Handelsexperte</h1>
             <p>Die Revolution des algorithmischen Handels. Wir schaffen selbst-evolvierende Intelligenz für höhere Performance und adaptive Märkte.</p>
-            <a href="#investors" class="cta-button">Für Investoren</a>
+            <a href="#investors" class="cta-button">Für Investoren <i class="fas fa-arrow-right" style="margin-left: 10px;"></i></a>
         </div>
 
         <div class="hero-tiles">
             <div class="tile">
+                <i class="fas fa-dna"></i>
                 <h3>Selbst-evolvierend</h3>
                 <p>Ein System, das sich durch genetische Selektion und Mutation an jedes Marktregime anpasst.</p>
             </div>
             <div class="tile">
+                <i class="fas fa-chart-line"></i>
                 <h3>Smart Money Signale</h3>
                 <p>Analyse institutioneller Order-Flows und Liquiditätszonen statt reiner Retail-Indikatoren.</p>
             </div>
             <div class="tile">
+                <i class="fas fa-search-dollar"></i>
                 <h3>Transparente KI</h3>
                 <p>Erklärbare Entscheidungen durch unser 4-Säulen-Validierungsframework. Keine Black Box.</p>
             </div>
@@ -413,15 +449,17 @@
     <section id="about">
         <h2 class="section-title">Über AION AMÉRICA S.A.S.</h2>
         <div class="about-grid">
-            <div class="founder-img-placeholder">
-                <!-- Bild: Mensch Gespräch -->
-                <img src="AION_Mensch_Gespräch.png" alt="Visionary Interface" class="founder-img">
+            <!-- HIER: Foto Christian Fock -->
+            <div class="founder-container">
+                <img src="Foto_Gründer.jpeg" alt="Christian Fock - Gründer" class="founder-img">
+                <div style="text-align: center; margin-top: 10px; color: #fff; font-size: 0.9rem;">THE VISIONARY</div>
             </div>
+            
             <div class="about-content">
                 <p style="margin-bottom: 20px;">
                     AION AMÉRICA S.A.S. ist ein Technologieunternehmen mit Sitz in Paraguay, das die Grenzen des Machbaren im FinTech-Bereich verschiebt. Unsere Mission ist die Abkehr von statischen Algorithmen hin zu lebendigen, digitalen Ökosystemen.
                 </p>
-                <h3 style="color: #fff;">Christian Fock – Gründer & Visionär</h3>
+                <h3 style="color: #fff; margin-bottom: 15px;">Christian Fock – Gründer & Visionär</h3>
                 <ul>
                     <li>Pionier in der Entwicklung KI-gestützter Handelssysteme.</li>
                     <li>Spezialisiert auf autonome Agenten und selbst-evolvierende Netzwerke.</li>
@@ -436,7 +474,7 @@
     <section id="tech">
         <h2 class="section-title">Technologie-Stack</h2>
         
-        <h3 style="color: #b0b8c4; margin-bottom: 20px;">Genetische Evolution (Der Prozess)</h3>
+        <h3 style="color: #b0b8c4; margin-bottom: 20px;"><i class="fas fa-project-diagram"></i> Genetische Evolution (Der Prozess)</h3>
         <div class="timeline">
             <div class="timeline-item">
                 <h4>1. Initialisierung</h4>
@@ -456,22 +494,28 @@
             </div>
         </div>
 
-        <h3 style="color: #b0b8c4; margin-bottom: 20px;">Drei-Säulen-Framework</h3>
-        <!-- Bild: Raik Methode -->
-        <img src="Raik_Methode_Darstellung.png" alt="Raik Methode Chart" class="tech-image" style="max-width: 800px; display:block; margin: 0 auto 40px auto;">
+        <!-- HIER: Bild Raik Methode -->
+        <h3 style="color: #b0b8c4; margin-bottom: 20px; margin-top: 60px;">Drei-Säulen-Framework</h3>
+        
+        <div class="content-image-container">
+            <img src="Raik_Methode_Darstellung.jpeg" alt="Raik Methode Analyse" class="content-image">
+        </div>
 
-        <div class="tech-columns">
-            <div class="tech-col">
+        <div class="framework-grid">
+            <div class="framework-card">
+                <i class="fas fa-calculator framework-icon"></i>
                 <h4>Raik-Fibonacci</h4>
-                <p>Identifiziert mathematische Konfluenz-Zonen und Umkehrpunkte mit höchster Wahrscheinlichkeit.</p>
+                <p style="font-size: 0.9rem; color: #a0a8b4;">Identifiziert mathematische Konfluenz-Zonen und Umkehrpunkte mit höchster Wahrscheinlichkeit.</p>
             </div>
-            <div class="tech-col">
+            <div class="framework-card">
+                <i class="fas fa-building-columns framework-icon"></i>
                 <h4>Smart Money</h4>
-                <p>Erkennt institutionelle Order-Blocks und Liquiditätsfallen (Stop Hunts).</p>
+                <p style="font-size: 0.9rem; color: #a0a8b4;">Erkennt institutionelle Order-Blocks und Liquiditätsfallen (Stop Hunts).</p>
             </div>
-            <div class="tech-col">
-                <h4>Reinforcement Learning</h4>
-                <p>Q-Learning Schicht, die aus jedem Trade lernt, kombiniert mit LLM-Sentiment-Analyse.</p>
+            <div class="framework-card">
+                <i class="fas fa-layer-group framework-icon"></i>
+                <h4>Multi-Timeframe</h4>
+                <p style="font-size: 0.9rem; color: #a0a8b4;">Synchronisation von Wochen-, Tages- und Stundencharts zur Fehlerreduktion.</p>
             </div>
         </div>
     </section>
@@ -481,30 +525,39 @@
         <h2 class="section-title">Funktionen & Architektur</h2>
 
         <div class="process-loop">
-            <div class="step"><h4>Start Population</h4></div>
+            <div class="step"><i class="fas fa-vial"></i><h4>Start</h4></div>
             <div class="arrow">→</div>
-            <div class="step"><h4>Selektion</h4></div>
+            <div class="step"><i class="fas fa-filter"></i><h4>Selektion</h4></div>
             <div class="arrow">→</div>
-            <div class="step"><h4>Mutation</h4></div>
+            <div class="step"><i class="fas fa-random"></i><h4>Mutation</h4></div>
             <div class="arrow">→</div>
-            <div class="step"><h4>Feinjustierung</h4></div>
+            <div class="step"><i class="fas fa-medal"></i><h4>Optimum</h4></div>
         </div>
 
-        <!-- Video: Abstract Network -->
+        <!-- HIER: Bild Mensch-KI Gespräch / Architektur -->
+        <h3 style="color: #b0b8c4; margin-bottom: 20px; text-align: center;">Mensch-KI Interaktion & Architektur</h3>
+        <div class="content-image-container">
+            <img src="AION_Mensch_Gespräch.jpeg" alt="System Architektur & Interaktion" class="content-image">
+        </div>
+
+        <!-- Video Abstract Network -->
         <video autoplay muted loop playsinline class="video-feature">
             <source src="Abstract_Neural_Network_Evolution_Render.mp4" type="video/mp4">
         </video>
 
         <div class="hero-tiles">
             <div class="tile">
+                <i class="fas fa-users-cog"></i>
                 <h3>Ensemble Signale</h3>
                 <p>Unabhängiges Voting-System aus 4 Logik-Schichten für maximale Sicherheit.</p>
             </div>
             <div class="tile">
+                <i class="fas fa-robot"></i>
                 <h3>Autonome Anpassung</h3>
                 <p>Erkennt Marktregimes (Trend vs. Seitwärts) und schaltet Strategien automatisch um.</p>
             </div>
             <div class="tile">
+                <i class="fas fa-shield-alt"></i>
                 <h3>Compliance Ready</h3>
                 <p>Vollständige Auditierbarkeit aller KI-Entscheidungen.</p>
             </div>
@@ -530,13 +583,13 @@
             </div>
         </div>
 
-        <div class="contact-box" style="text-align: left; background: transparent; border: none; padding: 0;">
+        <div class="contact-box" style="text-align: left; background: rgba(11,22,44,0.5);">
             <h3 style="color: #fff; margin-bottom: 20px;">Ihre Vorteile</h3>
             <ul style="list-style: none; color: #b0b8c4;">
-                <li style="margin-bottom: 15px;">✅ <strong>Kosteneffizienz:</strong> KI ersetzt teure Analysten-Teams.</li>
-                <li style="margin-bottom: 15px;">✅ <strong>Skalierbarkeit:</strong> Modulare Architektur für beliebiges Volumen.</li>
-                <li style="margin-bottom: 15px;">✅ <strong>Diversifikation:</strong> Risikominimierung durch Multi-Strategie-Ansatz.</li>
-                <li style="margin-bottom: 15px;">✅ <strong>Zukunftssicherheit:</strong> LLM-Ready Architektur.</li>
+                <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-color); margin-right: 10px;"></i> <strong>Kosteneffizienz:</strong> KI ersetzt teure Analysten-Teams.</li>
+                <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-color); margin-right: 10px;"></i> <strong>Skalierbarkeit:</strong> Modulare Architektur für beliebiges Volumen.</li>
+                <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-color); margin-right: 10px;"></i> <strong>Diversifikation:</strong> Risikominimierung durch Multi-Strategie-Ansatz.</li>
+                <li style="margin-bottom: 15px;"><i class="fas fa-check" style="color: var(--accent-color); margin-right: 10px;"></i> <strong>Zukunftssicherheit:</strong> LLM-Ready Architektur.</li>
             </ul>
         </div>
     </section>
@@ -545,7 +598,7 @@
     <section id="contact">
         <h2 class="section-title">Kontakt</h2>
         <div class="contact-box">
-            <p style="margin-bottom: 30px;">Bereit für die Evolution des Handels? Kontaktieren Sie uns für Partnerschaften oder Demos.</p>
+            <p style="margin-bottom: 30px; font-size: 1.2rem;">Bereit für die Evolution des Handels?</p>
             
             <div class="contact-detail">
                 <strong>Firma</strong>
@@ -557,11 +610,11 @@
             </div>
             <div class="contact-detail">
                 <strong>Kontakt</strong>
-                E-Mail: ch.fock@gmx.net<br>
+                <a href="mailto:ch.fock@gmx.net" style="color: #fff; text-decoration: none;">ch.fock@gmx.net</a><br>
                 Tel: +595 984 530364
             </div>
 
-            <a href="mailto:ch.fock@gmx.net" class="cta-button" style="margin-top: 30px;">E-Mail Senden</a>
+            <a href="mailto:ch.fock@gmx.net" class="cta-button" style="margin-top: 30px;">Nachricht Senden</a>
         </div>
     </section>
 
