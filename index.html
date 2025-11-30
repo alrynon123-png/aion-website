@@ -6,9 +6,9 @@
     <title>AION AMERICA S.A.S. | Autonomous Intelligence</title>
     <style>
         :root {
-            --bg-color: #050a14; /* Sehr dunkles Blau/Schwarz */
+            --bg-color: #050a14;
             --text-color: #e0e6ed;
-            --accent-color: #00d4ff; /* AION Cyan */
+            --accent-color: #00d4ff;
             --secondary-bg: #0b162c;
             --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
@@ -23,23 +23,22 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             font-family: var(--font-main);
-            line-height: 1.6;
+            line-height: 1.8; /* Etwas mehr Zeilenabstand für bessere Lesbarkeit des Textes */
             overflow-x: hidden;
         }
 
         /* --- Header --- */
         header {
-            height: 100vh; /* Volle Bildschirmhöhe */
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            /* Hintergrund-Animation läuft weiter */
             background: linear-gradient(-45deg, #050a14, #0b162c, #102a4a, #001f3f);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         @keyframes gradientBG {
@@ -48,15 +47,13 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Styling für das Logo-Video oben */
         .header-video {
             width: 100%;
-            max-width: 800px; /* Damit es auf riesigen Bildschirmen nicht zu gigantisch wird */
+            max-width: 800px;
             height: auto;
             margin-bottom: 30px;
             border-radius: 10px;
-            /* Optional: Leichter Schatten für Tiefe */
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); 
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.6); 
         }
 
         .cta-button {
@@ -69,6 +66,7 @@
             transition: all 0.3s ease;
             font-size: 0.9rem;
             margin-top: 20px;
+            display: inline-block;
         }
 
         .cta-button:hover {
@@ -79,38 +77,51 @@
 
         /* Sections General */
         section {
-            padding: 80px 20px;
+            padding: 100px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
         .section-title {
             font-size: 2.5rem;
-            margin-bottom: 60px;
-            border-left: 4px solid var(--accent-color);
-            padding-left: 20px;
+            margin-bottom: 50px;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 25px;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            display: block;
         }
 
         /* About Section */
         .about-text {
-            font-size: 1.2rem;
-            max-width: 800px;
+            font-size: 1.15rem;
+            max-width: 900px;
             margin: 0 auto;
             color: #b0b8c4;
+            text-align: left;
+        }
+        
+        .about-text p {
+            margin-bottom: 25px;
         }
 
-        /* --- Container für das zweite Video --- */
         .ai-image-container {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Zentriert das Video horizontal */
+            align-items: center;
         }
 
-        /* Styling für das zweite Video (Abstract Network) */
         .ai-media {
-            width: 65%; /* HIER GEÄNDERT: Nur noch 65% der Breite (ca. 35% kleiner) */
+            width: 65%;
             height: auto;
             border-radius: 12px;
             border: 1px solid rgba(0, 212, 255, 0.3);
@@ -124,7 +135,6 @@
             box-shadow: 0 0 50px rgba(0, 212, 255, 0.3);
         }
 
-        /* Mobile Anpassung: Auf Handys soll das untere Video trotzdem etwas größer sein, damit man was erkennt */
         @media (max-width: 768px) {
             .ai-media { width: 90%; }
             .header-video { width: 100%; }
@@ -133,19 +143,19 @@
         /* Tech Grid */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
         }
 
         .card {
             background-color: var(--secondary-bg);
             padding: 40px;
-            border-radius: 5px;
+            border-radius: 8px;
             border-top: 1px solid rgba(0, 212, 255, 0.1);
             transition: all 0.3s ease;
+            height: 100%;
         }
 
-        /* Schwebende Karten */
         .card:hover {
             transform: translateY(-10px) scale(1.02);
             border-top: 1px solid var(--accent-color);
@@ -155,17 +165,48 @@
 
         .card h3 {
             color: var(--accent-color);
-            margin-bottom: 20px;
-            font-size: 1.4rem;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+        
+        .card ul {
+            list-style-type: none;
+            padding-left: 0;
+            color: #b0b8c4;
+        }
+        
+        .card li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .card li::before {
+            content: "▹";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Architecture Section Grid */
+        .arch-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 900px) {
+            .arch-grid { grid-template-columns: 1fr; }
         }
 
         /* Footer */
         footer {
             background-color: var(--secondary-bg);
-            padding: 60px 20px;
+            padding: 80px 20px;
             margin-top: 100px;
             border-top: 1px solid #1c2b45;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #8892b0;
         }
 
@@ -180,7 +221,7 @@
 
         .footer-block h4 {
             color: #fff;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -198,67 +239,93 @@
     </header>
 
     <section id="about">
-        <h2 class="section-title">Survival of the Fittest</h2>
+        <span class="section-subtitle">Mission Statement</span>
+        <h2 class="section-title">Survival of the Fittest im digitalen Markt</h2>
         
         <div class="ai-image-container">
              <video autoplay muted loop playsinline class="ai-media">
                 <source src="Abstract_Neural_Network_Evolution_Render.mp4" type="video/mp4">
              </video>
-             <p style="color: #4a5568; font-size: 0.8rem; margin-top: 10px;">(Visualisierung des Neuralen Netzwerks)</p>
+             <p style="color: #4a5568; font-size: 0.8rem; margin-top: 10px;">(Echtzeit-Visualisierung des Neuralen Netzwerks)</p>
         </div>
 
         <div class="about-text">
             <p>
-                AION AMERICA S.A.S. ist ein Technologieunternehmen spezialisiert auf die Entwicklung 
-                selbst-evolvierender algorithmischer Systeme. Wir glauben nicht an statische Märkte. 
-                Unsere Systeme basieren auf einem darwinistischen Selektionsprozess, 
-                bei dem sich nur die effektivsten Strategien durchsetzen.
+                AION AMERICA S.A.S. definiert die Grenzen des algorithmischen Handels neu. Wir verstehen Märkte nicht als statische Umgebungen, sondern als lebendige, evolutionäre Ökosysteme.
             </p>
-            <br>
             <p>
-                Wir kombinieren institutionelle Marktstruktur-Analysen mit modernstem Reinforcement Learning, 
-                um adaptive Intelligenz zu schaffen, die jenseits menschlicher Kapazitäten operiert.
+                Herkömmliche Algorithmen scheitern, weil sie starr sind. AION hingegen nutzt einen <strong>darwinistischen Selektionsprozess</strong>: Hunderte von Handelsstrategien treten in einem ständigen Wettbewerb gegeneinander an. Nur die anpassungsfähigsten "überleben" und geben ihre Parameter an die nächste Generation weiter.
+            </p>
+            <p>
+                Das Ergebnis ist eine künstliche Intelligenz, die nicht programmiert wurde, um einem Markt zu folgen – sondern die gelernt hat, sich selbst zu entwickeln.
             </p>
         </div>
     </section>
 
     <section id="tech">
-        <h2 class="section-title">Technologie-Stack</h2>
+        <span class="section-subtitle">Core Technology</span>
+        <h2 class="section-title">Technologie-Stack & Innovation</h2>
         <div class="grid">
             <div class="card">
-                <h3>Evolutionäre KI</h3>
-                <p>
-                    Unsere ML-Knoten optimieren sich über Generationen hinweg selbst. 
-                    Durch genetische Selektion von über 80 Parametern passt sich das System 
-                    dynamisch an jede Marktphase an – völlig autonom.
-                </p>
+                <h3>1. Evolutionäre KI</h3>
+                <p>Unser genetischer Algorithmus imitiert die biologische Evolution:</p>
+                <br>
+                <ul>
+                    <li><strong>Selektion:</strong> 100 ML-Knoten konkurrieren gleichzeitig in verschiedenen Marktregimes.</li>
+                    <li><strong>Mutation:</strong> Über 80 Parameter werden dynamisch neu kombiniert, um neue Strategien zu entdecken.</li>
+                    <li><strong>Adaption:</strong> Das System verwirft schwache Modelle automatisch und skaliert erfolgreiche Strategien.</li>
+                </ul>
             </div>
             <div class="card">
-                <h3>Raik-Methode</h3>
-                <p>
-                    Integration proprietärer Fibonacci-Frameworks zur Identifikation von 
-                    Konfluenzpunkten und hochwahrscheinlichen Umkehrzonen im institutionellen Handel.
-                </p>
+                <h3>2. Die Raik-Methode</h3>
+                <p>Ein proprietäres Analyse-Framework, das mathematische Präzision mit Marktpsychologie verbindet:</p>
+                <br>
+                <ul>
+                    <li><strong>Fibonacci-Konfluenz:</strong> Identifikation von hochwahrscheinlichen Umkehrpunkten durch überlagernde mathematische Verhältnisse.</li>
+                    <li><strong>40% Gewichtung:</strong> Das Herzstück unserer Signalerzeugung für präzise Ein- und Ausstiege.</li>
+                    <li><strong>Multi-Timeframe:</strong> Synchronisation von Wochen-, Tages- und Stundencharts.</li>
+                </ul>
             </div>
             <div class="card">
-                <h3>Smart Money Concepts</h3>
-                <p>
-                    Wir analysieren den Markt jenseits des Retail-Sentiments. 
-                    Unsere Algorithmen erkennen Order Blocks und Liquiditätszonen, 
-                    um den Fluss des großen Kapitals präzise zu antizipieren.
-                </p>
+                <h3>3. Smart Money Concepts</h3>
+                <p>Wir folgen nicht der Herde, sondern dem Kapital:</p>
+                <br>
+                <ul>
+                    <li><strong>Order Blocks:</strong> Erkennung institutioneller Fußabdrücke im Chart.</li>
+                    <li><strong>Liquiditäts-Zonen:</strong> Antizipation von Marktmanipulationen ("Stop Hunts") bevor sie geschehen.</li>
+                    <li><strong>Strukturanalyse:</strong> Unterscheidung zwischen echtem Trendwechsel und kurzfristigem Rauschen.</li>
+                </ul>
             </div>
         </div>
     </section>
 
     <section>
-        <h2 class="section-title">Architektur & Sicherheit</h2>
-        <div class="about-text">
-            <p>
-                Transparenz statt Black-Box. AION nutzt ein unabhängiges Validierungs-System ("Voting"), 
-                das Signale durch vier verschiedene Analyse-Layer prüft, bevor eine autonome Entscheidung getroffen wird.
-                Dies garantiert Robustheit und reduziert das Risiko in volatilen Märkten.
-            </p>
+        <span class="section-subtitle">System Architecture</span>
+        <h2 class="section-title">Infrastruktur & Sicherheit</h2>
+        
+        <div class="arch-grid">
+            <div class="about-text" style="margin:0;">
+                <h3 style="color: var(--accent-color); margin-bottom: 20px;">Das 4-Säulen-Validierungssystem</h3>
+                <p>
+                    Keine Entscheidung wird isoliert getroffen. AION nutzt ein komplexes Voting-System, um Fehlsignale drastisch zu reduzieren. Ein Trade wird nur ausgeführt, wenn vier unabhängige Logik-Schichten zustimmen:
+                </p>
+                <ul style="list-style: none; padding: 0; color: #b0b8c4;">
+                    <li style="margin-bottom: 10px;">✅ <strong>ML-Ensemble Konsens</strong> (Künstliche Intelligenz)</li>
+                    <li style="margin-bottom: 10px;">✅ <strong>Fibonacci-Struktur</strong> (Mathematik)</li>
+                    <li style="margin-bottom: 10px;">✅ <strong>Institutioneller Orderflow</strong> (Volumen)</li>
+                    <li style="margin-bottom: 10px;">✅ <strong>Trend-Validierung</strong> (Zeitrahmen-Analyse)</li>
+                </ul>
+            </div>
+            
+            <div class="about-text" style="margin:0;">
+                <h3 style="color: var(--accent-color); margin-bottom: 20px;">Kontinuierliches Lernen (RL)</h3>
+                <p>
+                    AION schläft nie. Durch <strong>Reinforcement Learning (Q-Learning)</strong> analysiert das System jeden abgeschlossenen Trade – ob Gewinn oder Verlust.
+                </p>
+                <p>
+                    Alle 50 bis 200 Kerzen findet ein automatisches Retraining statt. Das System erkennt veränderte Marktphasen (z.B. Wechsel von Trend zu Seitwärtsbewegung) und passt seine Risikoparameter autonom an, ohne menschliches Eingreifen.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -267,9 +334,13 @@
             <div class="footer-block">
                 <h4>AION AMERICA S.A.S.</h4>
                 <p>Forschung & Entwicklung<br>Autonome Finanzsysteme</p>
+                <br>
+                <p style="font-size: 0.8rem; opacity: 0.7;">
+                    "Evolution is not a choice.<br>It's a necessity."
+                </p>
             </div>
             <div class="footer-block">
-                <h4>Standort</h4>
+                <h4>Hauptsitz</h4>
                 <p>Ruta Santa Librada, Lote 003</p>
                 <p>5522 Mauricio Jose Troche</p>
                 <p>Guaira, Paraguay</p>
@@ -280,8 +351,8 @@
                 <p>Tel: +595 984 530364</p>
             </div>
         </div>
-        <div style="text-align: center; margin-top: 50px; color: #4a5568; font-size: 0.8rem;">
-            &copy; 2025 AION AMERICA S.A.S. | All Systems Operational.
+        <div style="text-align: center; margin-top: 60px; color: #4a5568; font-size: 0.8rem; border-top: 1px solid #1c2b45; padding-top: 20px;">
+            &copy; 2025 AION AMERICA S.A.S. | Proprietary Trading & AI Research. All Systems Operational.
         </div>
     </footer>
 
