@@ -31,7 +31,7 @@
             padding-top: var(--nav-height); /* Platz für fixierte Navbar */
         }
 
-        /* --- Navigation --- */
+        /* --- NAVIGATION --- */
         nav {
             position: fixed;
             top: 0;
@@ -41,7 +41,7 @@
             background: rgba(5, 10, 20, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0, 212, 255, 0.1);
-            z-index: 1000;
+            z-index: 9999; /* Immer ganz oben */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -76,12 +76,14 @@
             color: var(--accent-color);
         }
 
-        /* --- Global Sections --- */
+        /* --- GLOBAL SECTIONS --- */
         section {
             padding: 100px 40px;
             max-width: 1400px;
             margin: 0 auto;
             border-bottom: 1px solid rgba(255,255,255,0.03);
+            position: relative; /* Wichtig für Sichtbarkeit */
+            z-index: 1;
         }
 
         h2.section-title {
@@ -151,6 +153,7 @@
             transition: all 0.3s;
             display: inline-block;
             box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+            cursor: pointer;
         }
 
         .cta-button:hover {
@@ -189,14 +192,383 @@
 
         .founder-img-placeholder {
             width: 100%;
-            height: 400px;
+            height: auto;
             background: #0e1c36;
             border: 1px solid #1c2b45;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #3a4b66;
-            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
         }
         
-        /* Hier nutzen wir das Bild
+        .founder-img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        .about-content ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .about-content li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .about-content li::before {
+            content: '▹';
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+        }
+
+        /* --- 3. TECHNOLOGIE (#tech) --- */
+        
+        /* Timeline Style */
+        .timeline {
+            border-left: 2px solid var(--secondary-bg);
+            padding-left: 40px;
+            margin: 40px 0 80px 20px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -49px; /* Linie treffen */
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            background: var(--bg-color);
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .timeline-item h4 { color: #fff; margin-bottom: 5px; }
+        .timeline-item p { font-size: 0.95rem; }
+
+        /* 3 Columns Tech */
+        .tech-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .tech-col {
+            background: rgba(11, 22, 44, 0.5);
+            padding: 30px;
+            border-top: 1px solid var(--accent-color);
+            transition: transform 0.3s;
+        }
+        
+        .tech-col:hover { transform: translateY(-5px); }
+
+        .tech-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 30px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+        }
+
+        /* --- 4. FUNKTIONEN (#features) --- */
+        .process-loop {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 80px;
+            background: var(--secondary-bg);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .step { text-align: center; flex: 1; min-width: 150px; padding: 10px; }
+        .step h4 { color: var(--accent-color); margin-bottom: 5px; font-size: 1rem; }
+        .arrow { color: #3a4b66; font-size: 1.5rem; }
+
+        .video-feature {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 60px auto;
+            display: block;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        /* --- 5. INVESTOREN (#investors) --- */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: bold;
+            color: transparent;
+            -webkit-text-stroke: 1px var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-label { color: #fff; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* --- 6. KONTAKT (#contact) --- */
+        .contact-box {
+            background: var(--secondary-bg);
+            padding: 60px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .contact-detail {
+            margin: 20px 0;
+            font-size: 1.1rem;
+        }
+        
+        .contact-detail strong { color: #fff; display: block; margin-bottom: 5px; }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.8rem;
+            color: #5a6b86;
+            border-top: 1px solid #1c2b45;
+        }
+
+        /* Mobile Nav */
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* Vereinfachung für Mobile */
+            nav { justify-content: center; }
+            .about-grid { grid-template-columns: 1fr; }
+            .process-loop { flex-direction: column; gap: 20px; }
+            .arrow { transform: rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="nav-logo">AION <span>AMERICA</span></div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">Über</a>
+            <a href="#tech">Technologie</a>
+            <a href="#features">Funktionen</a>
+            <a href="#investors">Investoren</a>
+            <a href="#contact">Kontakt</a>
+        </div>
+    </nav>
+
+    <!-- 1. HOME / HERO -->
+    <section id="home">
+        <div class="hero-video-container">
+            <!-- Logo-Video -->
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="Video_Fortsetzung_Mit_Logo.mp4" type="video/mp4">
+            </video>
+        </div>
+        
+        <div class="hero-text">
+            <h1>AION – KI-gestützter Handelsexperte</h1>
+            <p>Die Revolution des algorithmischen Handels. Wir schaffen selbst-evolvierende Intelligenz für höhere Performance und adaptive Märkte.</p>
+            <a href="#investors" class="cta-button">Für Investoren</a>
+        </div>
+
+        <div class="hero-tiles">
+            <div class="tile">
+                <h3>Selbst-evolvierend</h3>
+                <p>Ein System, das sich durch genetische Selektion und Mutation an jedes Marktregime anpasst.</p>
+            </div>
+            <div class="tile">
+                <h3>Smart Money Signale</h3>
+                <p>Analyse institutioneller Order-Flows und Liquiditätszonen statt reiner Retail-Indikatoren.</p>
+            </div>
+            <div class="tile">
+                <h3>Transparente KI</h3>
+                <p>Erklärbare Entscheidungen durch unser 4-Säulen-Validierungsframework. Keine Black Box.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. ÜBER UNS -->
+    <section id="about">
+        <h2 class="section-title">Über AION AMÉRICA S.A.S.</h2>
+        <div class="about-grid">
+            <div class="founder-img-placeholder">
+                <!-- Bild: Mensch Gespräch -->
+                <img src="AION_Mensch_Gespräch.png" alt="Visionary Interface" class="founder-img">
+            </div>
+            <div class="about-content">
+                <p style="margin-bottom: 20px;">
+                    AION AMÉRICA S.A.S. ist ein Technologieunternehmen mit Sitz in Paraguay, das die Grenzen des Machbaren im FinTech-Bereich verschiebt. Unsere Mission ist die Abkehr von statischen Algorithmen hin zu lebendigen, digitalen Ökosystemen.
+                </p>
+                <h3 style="color: #fff;">Christian Fock – Gründer & Visionär</h3>
+                <ul>
+                    <li>Pionier in der Entwicklung KI-gestützter Handelssysteme.</li>
+                    <li>Spezialisiert auf autonome Agenten und selbst-evolvierende Netzwerke.</li>
+                    <li>Entwickler der proprietären "Raik-Methode" zur Marktstruktur-Analyse.</li>
+                    <li>Fokus auf nachhaltige "Survival of the Fittest" Strategien.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. TECHNOLOGIE -->
+    <section id="tech">
+        <h2 class="section-title">Technologie-Stack</h2>
+        
+        <h3 style="color: #b0b8c4; margin-bottom: 20px;">Genetische Evolution (Der Prozess)</h3>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h4>1. Initialisierung</h4>
+                <p>Start mit 100 ML-Handelsknoten & 80 optimierbaren Parametern.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>2. Turnierselektion</h4>
+                <p>Die Knoten treten im Live-Markt gegeneinander an. Nur die Besten überleben.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>3. Crossover & Mutation</h4>
+                <p>Die Parameter der Gewinner werden gekreuzt und leicht mutiert.</p>
+            </div>
+            <div class="timeline-item">
+                <h4>4. Alpha-Generation</h4>
+                <p>Nach 20 Generationen entsteht eine hochoptimierte Strategie.</p>
+            </div>
+        </div>
+
+        <h3 style="color: #b0b8c4; margin-bottom: 20px;">Drei-Säulen-Framework</h3>
+        <!-- Bild: Raik Methode -->
+        <img src="Raik_Methode_Darstellung.png" alt="Raik Methode Chart" class="tech-image" style="max-width: 800px; display:block; margin: 0 auto 40px auto;">
+
+        <div class="tech-columns">
+            <div class="tech-col">
+                <h4>Raik-Fibonacci</h4>
+                <p>Identifiziert mathematische Konfluenz-Zonen und Umkehrpunkte mit höchster Wahrscheinlichkeit.</p>
+            </div>
+            <div class="tech-col">
+                <h4>Smart Money</h4>
+                <p>Erkennt institutionelle Order-Blocks und Liquiditätsfallen (Stop Hunts).</p>
+            </div>
+            <div class="tech-col">
+                <h4>Reinforcement Learning</h4>
+                <p>Q-Learning Schicht, die aus jedem Trade lernt, kombiniert mit LLM-Sentiment-Analyse.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. FUNKTIONEN -->
+    <section id="features">
+        <h2 class="section-title">Funktionen & Architektur</h2>
+
+        <div class="process-loop">
+            <div class="step"><h4>Start Population</h4></div>
+            <div class="arrow">→</div>
+            <div class="step"><h4>Selektion</h4></div>
+            <div class="arrow">→</div>
+            <div class="step"><h4>Mutation</h4></div>
+            <div class="arrow">→</div>
+            <div class="step"><h4>Feinjustierung</h4></div>
+        </div>
+
+        <!-- Video: Abstract Network -->
+        <video autoplay muted loop playsinline class="video-feature">
+            <source src="Abstract_Neural_Network_Evolution_Render.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero-tiles">
+            <div class="tile">
+                <h3>Ensemble Signale</h3>
+                <p>Unabhängiges Voting-System aus 4 Logik-Schichten für maximale Sicherheit.</p>
+            </div>
+            <div class="tile">
+                <h3>Autonome Anpassung</h3>
+                <p>Erkennt Marktregimes (Trend vs. Seitwärts) und schaltet Strategien automatisch um.</p>
+            </div>
+            <div class="tile">
+                <h3>Compliance Ready</h3>
+                <p>Vollständige Auditierbarkeit aller KI-Entscheidungen.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. INVESTOREN -->
+    <section id="investors">
+        <h2 class="section-title">Marktchance & Investoren</h2>
+        
+        <div class="stats-grid">
+            <div>
+                <div class="stat-number">+45%</div>
+                <div class="stat-label">Wachstum Algo-Trading</div>
+            </div>
+            <div>
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Autonome Operation</div>
+            </div>
+            <div>
+                <div class="stat-number">AI</div>
+                <div class="stat-label">Next Gen Tech</div>
+            </div>
+        </div>
+
+        <div class="contact-box" style="text-align: left; background: transparent; border: none; padding: 0;">
+            <h3 style="color: #fff; margin-bottom: 20px;">Ihre Vorteile</h3>
+            <ul style="list-style: none; color: #b0b8c4;">
+                <li style="margin-bottom: 15px;">✅ <strong>Kosteneffizienz:</strong> KI ersetzt teure Analysten-Teams.</li>
+                <li style="margin-bottom: 15px;">✅ <strong>Skalierbarkeit:</strong> Modulare Architektur für beliebiges Volumen.</li>
+                <li style="margin-bottom: 15px;">✅ <strong>Diversifikation:</strong> Risikominimierung durch Multi-Strategie-Ansatz.</li>
+                <li style="margin-bottom: 15px;">✅ <strong>Zukunftssicherheit:</strong> LLM-Ready Architektur.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 6. KONTAKT -->
+    <section id="contact">
+        <h2 class="section-title">Kontakt</h2>
+        <div class="contact-box">
+            <p style="margin-bottom: 30px;">Bereit für die Evolution des Handels? Kontaktieren Sie uns für Partnerschaften oder Demos.</p>
+            
+            <div class="contact-detail">
+                <strong>Firma</strong>
+                AION AMÉRICA S.A.S.
+            </div>
+            <div class="contact-detail">
+                <strong>Anschrift</strong>
+                Ruta Santa Librada, Lote 003<br>5522 Mauricio Jose Troche, Guaira, Paraguay
+            </div>
+            <div class="contact-detail">
+                <strong>Kontakt</strong>
+                E-Mail: ch.fock@gmx.net<br>
+                Tel: +595 984 530364
+            </div>
+
+            <a href="mailto:ch.fock@gmx.net" class="cta-button" style="margin-top: 30px;">E-Mail Senden</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        &copy; 2025 AION AMÉRICA S.A.S. | All Systems Operational.
+    </footer>
+
+</body>
+</html>
