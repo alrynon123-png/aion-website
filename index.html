@@ -27,14 +27,15 @@
             overflow-x: hidden;
         }
 
-        /* --- Animierter Hintergrund --- */
+        /* --- Header --- */
         header {
-            height: 100vh;
+            height: 100vh; /* Volle Bildschirmhöhe */
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            /* Hintergrund-Animation läuft weiter */
             background: linear-gradient(-45deg, #050a14, #0b162c, #102a4a, #001f3f);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
@@ -47,21 +48,15 @@
             100% { background-position: 0% 50%; }
         }
 
-        h1 {
-            font-size: 4rem;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #fff, var(--accent-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            font-weight: 300;
-            color: var(--accent-color);
-            margin-bottom: 40px;
+        /* Styling für das Logo-Video oben */
+        .header-video {
+            width: 100%;
+            max-width: 800px; /* Damit es auf riesigen Bildschirmen nicht zu gigantisch wird */
+            height: auto;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            /* Optional: Leichter Schatten für Tiefe */
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); 
         }
 
         .cta-button {
@@ -73,6 +68,7 @@
             letter-spacing: 2px;
             transition: all 0.3s ease;
             font-size: 0.9rem;
+            margin-top: 20px;
         }
 
         .cta-button:hover {
@@ -103,19 +99,22 @@
             color: #b0b8c4;
         }
 
-        /* --- KI-Bild/Video Styling --- */
+        /* --- Container für das zweite Video --- */
         .ai-image-container {
             text-align: center;
             margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Zentriert das Video horizontal */
         }
 
-        /* Styling gilt für Bilder UND Videos */
+        /* Styling für das zweite Video (Abstract Network) */
         .ai-media {
-            max-width: 100%;
+            width: 65%; /* HIER GEÄNDERT: Nur noch 65% der Breite (ca. 35% kleiner) */
             height: auto;
             border-radius: 12px;
             border: 1px solid rgba(0, 212, 255, 0.3);
-            box-shadow: 0 0 40px rgba(0, 212, 255, 0.15); /* Leichter Glow */
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
             opacity: 0.9;
             transition: opacity 0.3s ease;
         }
@@ -123,6 +122,12 @@
         .ai-media:hover {
             opacity: 1;
             box-shadow: 0 0 50px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Mobile Anpassung: Auf Handys soll das untere Video trotzdem etwas größer sein, damit man was erkennt */
+        @media (max-width: 768px) {
+            .ai-media { width: 90%; }
+            .header-video { width: 100%; }
         }
 
         /* Tech Grid */
@@ -140,7 +145,7 @@
             transition: all 0.3s ease;
         }
 
-        /* --- Schwebende Karten --- */
+        /* Schwebende Karten */
         .card:hover {
             transform: translateY(-10px) scale(1.02);
             border-top: 1px solid var(--accent-color);
@@ -179,20 +184,16 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
-        /* Mobile Optimization */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            section { padding: 50px 20px; }
-        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>AION</h1>
-        <h2>Autonomous Intelligence Operating Network</h2>
-        <p style="margin-bottom: 30px; color: #8892b0;">America S.A.S.</p>
+        <video autoplay muted loop playsinline class="header-video">
+            <source src="Video_Fortsetzung_Mit_Logo.mp4" type="video/mp4">
+            Dein Browser unterstützt dieses Videoformat leider nicht.
+        </video>
+        
         <a href="#about" class="cta-button">System Explore</a>
     </header>
 
@@ -202,7 +203,6 @@
         <div class="ai-image-container">
              <video autoplay muted loop playsinline class="ai-media">
                 <source src="Abstract_Neural_Network_Evolution_Render.mp4" type="video/mp4">
-                Dein Browser unterstützt dieses Videoformat leider nicht.
              </video>
              <p style="color: #4a5568; font-size: 0.8rem; margin-top: 10px;">(Visualisierung des Neuralen Netzwerks)</p>
         </div>
